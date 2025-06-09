@@ -13,6 +13,11 @@ public class BaseClient
     {
         var request = new RestRequest(resource, method);
         request.AddHeader("Content-Type", "application/json");
+        // Add the Authorization header if the token is set
+        if (!string.IsNullOrEmpty(Config.Token))
+        {
+            request.AddHeader("Authorization", $"Bearer {Config.Token}");
+        }
         return request;
     }
 }

@@ -12,6 +12,13 @@ public class CacheClient : BaseClient
         return client.Execute(request);
     }
 
+    public RestResponse PutData(CacheTestRequest body)
+    {
+        var request = CreateRequest(Method.Put);
+        request.AddJsonBody(body);
+        return client.Execute(request);
+    }
+
     public RestResponse GetData(string key)
     {
         var request = CreateRequest(Method.Get, $"?key={key}");
